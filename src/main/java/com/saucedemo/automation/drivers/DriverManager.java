@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeOptions;   //for the headless
 
 public class DriverManager {
 
@@ -15,7 +16,12 @@ public class DriverManager {
 
         if(browser.equalsIgnoreCase("chrome")){
             WebDriverManager.chromedriver().setup();
-            driverInstance = new ChromeDriver();
+            //driverInstance = new ChromeDriver();  // for the UI chrome
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            driverInstance = new ChromeDriver(options);   //for the headless
         }else if (browser.equalsIgnoreCase("firefox")){
             WebDriverManager.firefoxdriver().setup();
             driverInstance = new FirefoxDriver();
