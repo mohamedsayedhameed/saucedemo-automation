@@ -31,7 +31,6 @@ public class LoginTest extends BaseTest {
 
         if(isDisplayed){
             log.info("Login successful for user: {}", username);
-            log.info("Login successful for user: {}", username);
         }else{
             log.error("Login failed for user: {}", username);
         }
